@@ -7,8 +7,11 @@ The purpose of this exercise was to demonstrate competency in JavaScript and bas
 A dataset consisting of an array of UFO sighting events was provided. Each observation in the array is a JavaScript object containing a number of key:value pairs describing following:
 
 * Date of the sighting
-* Location of sighting (one key:value for country, state/provide, and city)
+* Location of sighting (one key:value each for country, state/provide, and city)
 * Shape of the UFO
 * Brief and oftentimes incomplete notes of the sighting
+
+A snippet of the array is shown below.
+![Image](array_data.jpg)
 
 The goal of the assignment is to create a webpage to display the UFO sighting data in an HTML table and provide means for users to filter the displayed table using on various inputs.
