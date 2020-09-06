@@ -237,3 +237,10 @@ h1 {
   color: gainsboro
 }
 
+#filter-btn {
+  margin-bottom: 8px;
+}
+
+#dropdownMenuButton {
+  margin-bottom: 8px;
+}

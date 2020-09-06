@@ -1,16 +1,13 @@
-// UFO Sightings Application
+// UFO Sightings Application, Level 2
 // Written by Jason Gabunilas
 
 // obtain the data from data.js
 var tableData = data;
 
-// YOUR CODE HERE!
 
 // A function that will change the value of the country dropdown menu upon selection of one of the country buttons
 function country(selectedCountry) {
     // Select the country dropdown button and set text equal to selection
-    // console.log(`you selected ${selectedCountry}`)
-    country_button = d3.select("#dropdownMenuButton");
     country_button.text(selectedCountry)
 }
 
@@ -32,23 +29,29 @@ tableData.forEach((ufoSighting) => {
         });            
 })
 
-// Build selectors for the country selection, updating the label on the dropdown menu accordingly
+// Build listeners for the country selection, which will execute the "country" function defined above and update the label on the dropdown menu accordingly
+var country_button = d3.select("#dropdownMenuButton");
+
+var select_all = d3.select('#all-button')
+select_all.on('click', function() {
+    country('All')
+})
 
 var select_usa = d3.select('#US-button')
 select_usa.on('click', function() {
-    country('us')
+    country('United States')
 })
 
 var select_ca = d3.select('#CAN-button')
 select_ca.on('click', function() {
-    country('ca')
+    country('Canada')
 })
 
 
 
 
 
-// Create a function that will filter tableData based on all applicable filters. By using individual if statements, the data will be processed through each filter sequentially. The filter will only apply if there is an entry for that filter provided by the user
+// The filtertable() function will filter tableData based on all applicable filters for datetime, city, state, country, and shape. By using individual if statements, the data will be processed through each filter sequentially. The filter will only apply if there is an entry for that filter provided by the user. If no filters are applied, the entire table will render.
 function filterTable() {
     var filteredData = tableData
     // console.log(dateTimeEntry.property('value'))
@@ -64,13 +67,17 @@ function filterTable() {
     if (shapeEntry.property('value')) {
         var filteredData = filteredData.filter(ufoSighting => ufoSighting.shape === shapeEntry.property('value').toLowerCase());
     }
+    // Filter on the country by determining which country has been selected by the country button. If neither 'us' nor 'ca' is selected, this filter will not run.
+    if (country_button.text() === 'United States') {
+        var filteredData = filteredData.filter(ufoSighting => ufoSighting.country === 'us')
+    } else if (country_button.text() === 'Canada') {
+        var filteredData = filteredData.filter(ufoSighting => ufoSighting.country === 'ca')
+    }
 
-
-
-    // Clear the table
+    // Clear the DOM table from the previous state
     ufo_table.selectAll('tr').remove();
     
-    // Repopulate the table with the filtered data.
+    // Repopulate the DOM table with the filtered data.
     filteredData.forEach((ufoSighting) => {
 
         var row = ufo_table.append('tr');
@@ -86,7 +93,7 @@ function filterTable() {
 
 
 
-// Create a listener for the Filter Table button by first selecting the button and then listening for a click. When a click is detected, run the filterTable function (defined)
+// Create a listener for the Filter Table button by first selecting the button and then listening for a click. When a click is detected, run the filterTable function 
 var filterButton = d3.select('#filter-btn');
 filterButton.on('click', function() {
     filterTable()
