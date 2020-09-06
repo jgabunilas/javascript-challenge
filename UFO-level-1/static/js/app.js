@@ -9,6 +9,18 @@ var tableData = data;
 // Begin by selecting the body of the table object in the DOM
 var ufo_table = d3.select("tbody");
 
+// Initialize the table with all data entries
+tableData.forEach((ufoSighting) => {
+    // For every object in the table, append a new row to the DOM table
+    var row = ufo_table.append('tr');
+    // Now use the forEach function to iterate though each key:value pair of each object. For every pair, append a new table data item (td), then populate the cell with the value.
+    Object.entries(ufoSighting).forEach(([key, value]) => {
+        var cell = row.append('td');
+        cell.text(value);
+        });            
+})
+
+
 // Select the date entry form
 var dateTimeEntry = d3.select('#datetime');
 
