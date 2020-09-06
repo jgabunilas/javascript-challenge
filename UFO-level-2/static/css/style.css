@@ -227,6 +227,7 @@ select {
 
 .jumbotron {
   background-image: url('../images/sighting.jpg');
+  background-size: cover;
 }
 
 h1 {
