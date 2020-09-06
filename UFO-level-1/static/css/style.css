@@ -94,14 +94,14 @@ select {
 /* The styles for the parallax */
 .hero {
   position: relative;
-  height: 550px;
+  height: 800px;
   padding: 20px;
   margin: 0;
   background: black;
-  background-image: url("../images/nasa.jpg");
+  background-image: url("../images/sighting.jpg");
   background-attachment: fixed;
   background-position: bottom center;
-  background-size: cover;
+  background-size: 100% 100%;
 }
 
 .hero h1 {
@@ -222,4 +222,8 @@ select {
   to {
     opacity: 1;
   }
+}
+
+.btn {
+  border: 2px solid silver 
 }
