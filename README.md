@@ -11,8 +11,6 @@ A dataset consisting of an array of UFO sighting events was provided. Each obser
 * Shape of the UFO
 * Brief and oftentimes incomplete notes of the sighting
 
-![](/UFO-level-1/array_data.jpg)
-
 The goal of the assignment is to create a webpage to display the UFO sighting data in an HTML table and provide means for users to filter the displayed table using on various inputs.
 
 ## Approach: Level 1 - Filter UFO Sightings by Date
