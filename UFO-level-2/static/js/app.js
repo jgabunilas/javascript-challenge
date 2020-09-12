@@ -76,7 +76,14 @@ function filterTable() {
 
     // Clear the DOM table from the previous state
     ufo_table.selectAll('tr').remove();
-    
+
+    // Clear the noData div 
+    d3.selectAll('#nodata').text('')
+
+    // If the filteredData has a length of zero, print a message indicating as such
+    if (filteredData.length === 0) {
+        d3.selectAll('#nodata').text('Sorry, your filter returned no results. Please try again.')
+    }
     // Repopulate the DOM table with the filtered data.
     filteredData.forEach((ufoSighting) => {
 
@@ -98,7 +105,3 @@ var filterButton = d3.select('#filter-btn');
 filterButton.on('click', function() {
     filterTable()
 });
-
-
-// Testing
-// dateTime.property('value', 'testing')
